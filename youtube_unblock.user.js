@@ -7,6 +7,8 @@
 // @match        https://www.youtube.com/watch*
 // @grant        none
 // @run-at       document-start
+// @updateURL    https://github.com/censorliber/youtube_unblock/raw/refs/heads/main/youtube_unblock.user.js
+// @downloadURL  https://github.com/censorliber/youtube_unblock/raw/refs/heads/main/youtube_unblock.user.js
 // ==/UserScript==
 
 (function() {

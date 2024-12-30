@@ -14,12 +14,31 @@
 (function() {
     'use strict';
 
-    const currentUrl = window.location.href;
-    const videoIdMatch = currentUrl.match(/v=([a-zA-Z0-9_-]+)/);
+    if (window.location.href.startsWith('https://www.youtube.com/watch')) {
+        const videoIdMatch = window.location.href.match(/v=([a-zA-Z0-9_-]+)/);
 
-    if (videoIdMatch && videoIdMatch[1]) {
-        const videoId = videoIdMatch[1];
-        const embedUrl = `https://www.youtube.com/embed/${videoId}`;
-        window.location.replace(embedUrl);
+        if (videoIdMatch && videoIdMatch[1]) {
+            const videoId = videoIdMatch[1];
+            const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+            window.location.replace(embedUrl);
+        }
+    } else {
+        window.addEventListener('click', function(event) {
+            let target = event.target;
+
+            while (target && target.tagName !== 'A') {
+              target = target.parentNode;
+            }
+
+            if (target && target.href && target.href.startsWith('https://www.youtube.com/watch')) {
+                event.preventDefault();
+                const videoIdMatch = target.href.match(/v=([a-zA-Z0-9_-]+)/);
+                if (videoIdMatch && videoIdMatch[1]) {
+                    const videoId = videoIdMatch[1];
+                    const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+                    GM_openInTab(embedUrl, { active: true });
+                }
+            }
+        });
     }
 })();

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YouTube Watch to Embed Redirect
 // @namespace    http://your-namespace.com
-// @version      0.1
+// @version      0.2
 // @description  Redirects YouTube watch links to embed links
 // @author       You
 // @match        https://www.youtube.com/watch*

@@ -7,6 +7,8 @@
 // @match        https://www.youtube.com/*
 // @grant        GM_openInTab
 // @run-at       document-idle
+// @updateURL    https://github.com/censorliber/youtube_unblock/raw/refs/heads/main/youtube_unblock.user.js
+// @downloadURL  https://github.com/censorliber/youtube_unblock/raw/refs/heads/main/youtube_unblock.user.js
 // ==/UserScript==
 
 (function() {

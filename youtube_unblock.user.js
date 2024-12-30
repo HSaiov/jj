@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         YouTube Watch to Embed Redirect (New Window)
 // @namespace    http://your-namespace.com
-// @version      0.5
+// @version      0.6
 // @description  Redirects YouTube watch links to embed links and opens them in a new window
 // @author       You
 // @match        https://www.youtube.com/*
@@ -14,22 +14,20 @@
 (function() {
     'use strict';
 
-    // Добавление метки к обработанным ссылкам
     const LINK_PROCESSED_ATTR = 'data-yt-redirect-processed';
 
     // Функция для обработки одной ссылки
     function processLink(link) {
-        // Проверяем, что это ссылка на видео, и она ещё не обработана
         if (!link.href.includes('/watch') || link.hasAttribute(LINK_PROCESSED_ATTR)) {
             return;
         }
 
-        // Добавляем атрибут, чтобы не обрабатывать ссылку повторно
         link.setAttribute(LINK_PROCESSED_ATTR, 'true');
 
-        // Отмена стандартного поведения и открытие в новой вкладке
         link.addEventListener('click', function(event) {
-            event.preventDefault(); // Предотвращаем стандартное действие
+            event.preventDefault(); // Отмена стандартного действия
+            event.stopImmediatePropagation(); // Остановка других обработчиков YouTube
+
             const videoIdMatch = link.href.match(/v=([a-zA-Z0-9_-]+)/);
             if (videoIdMatch && videoIdMatch[1]) {
                 const videoId = videoIdMatch[1];
@@ -45,7 +43,7 @@
         links.forEach(processLink);
     }
 
-    // Отслеживание новых ссылок через MutationObserver
+    // Наблюдатель для динамических изменений DOM
     const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
             if (mutation.type === 'childList') {
@@ -59,12 +57,10 @@
         });
     });
 
-    // Запуск наблюдателя
     observer.observe(document.body, {
         childList: true,
         subtree: true,
     });
 
-    // Обработка ссылок после загрузки страницы
     processExistingLinks();
 })();

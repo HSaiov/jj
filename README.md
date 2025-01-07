@@ -10,10 +10,11 @@
 Все они сыпятся об сайт Гугла `jnn-pa.googleapis.com` с ошибкой 403, которая не позволяет смотреть сайт через youtube.com. Причины этому до конца не ясны (_если Вы понимаете - отпишитесь_).
 
 ## Как установить
-1. Загрузите расширение https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo
-2. Установите скрипт https://zapret.now.sh/script.user.js
-3. Запустите любую стратегию Zapret
-4. Попробуйте начать смотреть YouTube
+1. **Перейти на страницу `about:extensions` и включить ползунок `Режим разработчика`. Без этого скрипт не будет работать!**
+2. Загрузите расширение https://chromewebstore.google.com/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo
+3. Установите скрипт https://zapret.now.sh/script.user.js
+4. Запустите любую стратегию Zapret
+5. Попробуйте начать смотреть YouTube
 
 Если необходимо Вы можете опробовать другие стратегии и конфиги для Zapret, какой-то из них обязательно должен заработать. 
 
